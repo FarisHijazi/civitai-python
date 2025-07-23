@@ -90,7 +90,7 @@ class Civitai:
                     logging.info(f"Job status: {last_response}")
                     for job in response.jobs:
                         if job.jobId not in completed_jobs:
-                            if job.result and job.result.get("blobUrl"):
+                            if job.result and [result.get("blobUrl") for result in job.result]:
                                 completed_jobs[job.jobId] = {
                                     "jobId": job.jobId,
                                     "cost": job.cost,
